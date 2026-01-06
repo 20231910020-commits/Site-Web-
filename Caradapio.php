@@ -37,7 +37,7 @@ session_start();
             </p>
 
             <div class="imagem-prato">
-                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkd380HjLTrGyazspJwytJdFG63o_TUgcuZWUNsVfb7vio63YXP0O8T4dNpJvcvDT7o1f-F9vm1OcqF0rBjO6EzwHzu7QyA89EdfRBSC1Ij__yeY_ZfeyUMT9Yu9HqdTUFfxae_AMsq5ZENXR7SQ73KJ5t6hbtXjcLu8fajfQxid7I-HC1RqgQVzl8nMk2WBgN7dY-b0iR3QinLt9ZgKEXzmA2T2IbB-SKbdXcQ=w1280" alt="Prato de comida">
+                <img src="..\imagens\Prato de comida.png" alt="Prato de comida">
             </div>
         </div>
         <p class="texto-login">

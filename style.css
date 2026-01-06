@@ -75,7 +75,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    padding: 70px;
+    padding: 40px;
     background: linear-gradient(to bottom, #e8f5e9, #ffffff);
     text-align: center;
 }
@@ -98,9 +98,9 @@ body {
     color: #555;
 }
 
-.imagem-prato img {
-    max-width: 320px;
-    height: auto;
+.imagem-prato img{
+    width: 450px;
+    height: 450x;
     border-radius: 10px;
 }
 
