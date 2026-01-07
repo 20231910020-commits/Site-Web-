@@ -17,4 +17,13 @@ function cadastrar_usuario($nome, $email, $senha){
     exit;
 }
 
+function buscar_usuario($email){
+    $conn = conectar();
+    $sql= "INSERT INTO usuarios (email) VALUES (:EMAIL)";
+    $instrucao= $conn -> prepare ($sql);
+    $instrucao -> bindparam(":EMAIL",$email);
+    $instrucao -> execute();
+
+    return $instrucao->fetch(PDO::FETCH_ASSOC);
+  
 ?>
