@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Login - Agendamento IFBA</title>
-    <link rel="stylesheet" href="/cardapio/cardapiocss/log.css">
-    <link rel="stylesheet" href="/cardapio/cardapiocss/style.css">
+    <link rel="stylesheet" href="log.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -15,8 +15,8 @@
         </div>
         <nav class="menu">
             <ul>
-                <li><a href="/cardapio/cardapio.php">Tela inicial</a></li>
-                <li><a href="/cardapio/cardapiophp/cadastro.php">Cadastrar</a></li>
+                <li><a href="cardapio.php">Tela inicial</a></li>
+                <li><a href="cadastro.php">Cadastrar</a></li>
             </ul>
         </nav>
     </header>

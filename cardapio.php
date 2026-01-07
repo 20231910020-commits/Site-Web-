@@ -6,7 +6,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Cantina IFBA</title>
-    <link rel="stylesheet" href="cardapiocss/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -20,8 +20,8 @@ session_start();
         </div>
         <nav class="menu" id="main-menu">
             <ul>
-                <li><a href="cardapiophp/cadastro.php" class="sair">Cadastrar</a></li>
-                <li><a href="/cardapio/cardapiophp/login.php" class="sair">Login</a></li>
+                <li><a href="cadastro.php" class="sair">Cadastrar</a></li>
+                <li><a href="login.php" class="sair">Login</a></li>
                 <li><a href="#" class="sair">Sair</a></li>
             </ul>
         </nav>

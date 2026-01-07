@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastro - Agendamento de Almoço IFBA</title>
-    <link rel="stylesheet" href="/cardapio/cardapiocss/cad.css">
-    <link rel="stylesheet" href="/cardapio/cardapiocss/style.css">
+    <link rel="stylesheet" href="cad.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -15,8 +15,8 @@
         </div>
         <nav class="menu" id="main-menu">
             <ul>
-                <li><a href="/cardapio/cardapio.php" class="sair">Tela inicial</a></li>
-                <li><a href="/cardapio/cardapiophp/login.php" class="sair">Login</a></li>
+                <li><a href="cardapio.php" class="sair">Tela inicial</a></li>
+                <li><a href="login.php" class="sair">Login</a></li>
                 <li><a href="#" class="sair">Sair</a></li>
             </ul>
         </nav>
@@ -25,12 +25,12 @@
     <main class="content-full">
         <div class="form-container">
             <h2>Cadastro</h2>
-            <form action="processar.php" method="POST">
+            <form action="./PHP/formulario.php" method="POST">
                 <input type="text" name="nome" placeholder="Nome Completo" size ="300" id="nome" required>
                 <input type="email" name="email" placeholder="E-mail" size ="300" id="email" required>
                 <input type="password" name="senha" placeholder="Senha" size ="300" id="senha" required>
                 <input type="password" name="confirmar_senha" placeholder="Confirmar Senha" size ="300" id="senha" required>
-                <button type="submit" class="btn-laranja">CADASTRAR</button>
+                <button type="submit" class="btn-laranja" name="salvar">CADASTRAR</button>
             </form>
         </div>
     </main>

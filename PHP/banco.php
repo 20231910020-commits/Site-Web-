@@ -13,6 +13,8 @@ function cadastrar_usuario($nome, $email, $senha){
     $instrucao -> bindparam(":SENHA",$senhaHash);
     $instrucao -> execute();
 
+    header('Location:../login.php');
+    exit;
 }
 
 ?>
