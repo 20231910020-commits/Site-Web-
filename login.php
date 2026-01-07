@@ -25,7 +25,7 @@
         <div class="login-container">
             <h2>Entrar</h2>
             
-            <form action="logar.php" method="POST">
+            <form action="./PHP/logar.php" method="POST">
                 <div class="input-group">
                     <input type="email" name="email" placeholder="E-mail" size ="300" id="email" required>
                 </div>

@@ -25,5 +25,5 @@ function buscar_usuario($email){
     $instrucao -> execute();
 
     return $instrucao->fetch(PDO::FETCH_ASSOC);
-  
+}
 ?>
