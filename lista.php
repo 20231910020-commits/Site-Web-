@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Agendamentos - IFBA</title>
-    <link rel="stylesheet" href="/cardapio/cardapiocss/list.css">
+    <link rel="stylesheet" href="list.css">
     <script src="script_atualizar.js" defer></script>
 </head>
 <body>
