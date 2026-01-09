@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Verificação de Código</title>
+    <link rel="stylesheet" href="verificarCodigoRecuperacao.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- TOPO -->
+    <header class="topo">
+        <div class="logo">
+            <span>IFBA Agendamento de Almoço</span>
+        </div>
+
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Cadastrar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main class="conteudo">
+        <div class="card-codigo">
+            <h1>Verificação de Código</h1>
+            <p class="subtitulo">
+                Digite o código que enviamos para o seu e-mail
+            </p>
+
+            <form>
+                <input 
+                    type="text"
+                    name="codigo"
+                    placeholder="Código de verificação"
+                    maxlength="6"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                    required
+                >
+
+                <button type="submit" class="btn cadastro">
+                    Verificar Código
+                </button>
+            </form>
+
+            <p class="reenviar">
+                Não recebeu o código?
+                <a href="#">Reenviar</a>
+            </p>
+        </div>
+    </main>
+
+</div>
+
+</body>
+</html>
