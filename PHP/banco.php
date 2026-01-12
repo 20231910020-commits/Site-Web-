@@ -25,5 +25,17 @@ function buscar_usuario($email){
     $instrucao -> execute();
 
     return $instrucao->fetch(PDO::FETCH_ASSOC);
+
+}
+
+function redefinir_senha($email, $nova_senha){
+    $conn = conectar();
+    $nova_senha_hash = password_hash($nova_senha, PASSWORD_DEFAULT);
+    $sql = "UPDATE usuarios SET senha = :SENHA WHERE email = :EMAIL";
+    $instrucao = $conn->prepare($sql);
+    $instrucao->bindParam(":EMAIL", $email);
+    $instrucao->bindParam(":SENHA", $nova_senha_hash);
+    $instrucao->execute();
 }
 ?>
+

@@ -45,10 +45,10 @@ session_start();
         </p>
 
         <div class="botoes">
-            <a href="cardapiophp/login.php" class="btn login">
+            <a href="login.php" class="btn login">
                 Login
             </a>
-            <a href="cardapiophp/cadastro.php" class="btn cadastro">
+            <a href="cadastro.php" class="btn cadastro">
                 Cadastro
             </a>
         </div>

@@ -37,7 +37,7 @@
                 <button type="submit" class="btn-verde" name="logar">Entrar</button>
                 
                 <div class="links-auxiliares">
-                    <a href="#">Esqueceu a senha?</a>
+                    <a href="esqueceu_senha.php">Esqueceu a senha?</a>
                     <p>Não tem cadastro? <a href="cadastro.php">Cadastre-se</a></p>
                 </div>
             </form>
