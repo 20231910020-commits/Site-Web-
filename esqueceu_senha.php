@@ -29,9 +29,9 @@
             <h1>Esqueceu a senha?</h1>
             <p class="subtitulo">Redefina a senha em duas etapas</p>
 
-            <form>
-                <input type="email" placeholder="E-mail" required>
-                <button type="submit" class="btn cadastro">Enviar</button>
+            <form method="POST" action="./PHP/enviar_token.php">
+                <input type="email" placeholder="E-mail" name="email" id="email" required >
+                <button type="submit" class="btn cadastro" name="salvar"> Enviar</button>
             </form>
         </div>
     </main>

@@ -31,8 +31,11 @@
                 Escolha uma nova senha para sua conta
             </p>
 
-            <form>
-                <input 
+            <form method="POST" action="./PHP/redefinir_senha.php">
+            <input type="hidden" name="token" value="<?php htmlspecialchars($token) ?>">
+            
+            
+            <input 
                     type="password"
                     name="senha"
                     placeholder="Nova senha"
@@ -46,7 +49,7 @@
                     required
                 >
 
-                <button type="submit" class="btn cadastro">
+                <button type="submit" class="btn cadastro" name="salvar">
                     Salvar nova senha
                 </button>
             </form>

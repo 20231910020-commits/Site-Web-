@@ -28,14 +28,27 @@ function buscar_usuario($email){
 
 }
 
-function redefinir_senha($email, $nova_senha){
+function redefinir_senha($token_hash, $nova_senha){
     $conn = conectar();
     $nova_senha_hash = password_hash($nova_senha, PASSWORD_DEFAULT);
-    $sql = "UPDATE usuarios SET senha = :SENHA WHERE email = :EMAIL";
+    $sql = "UPDATE usuarios SET senha = :SENHA WHERE reset_token_hash = :TOKEN";
     $instrucao = $conn->prepare($sql);
-    $instrucao->bindParam(":EMAIL", $email);
+    $instrucao->bindParam(":TOKEN", $token_hash);
     $instrucao->bindParam(":SENHA", $nova_senha_hash);
     $instrucao->execute();
 }
+
+function inserir_token($email,$token_hash, $expirar){
+    $conn = conectar();
+    $sql = "UPDATE usuarios SET reset_token_hash = :TOKEN, token_expirar= :EXPIRAR WHERE email = :EMAIL";
+    $instrucao = $conn->prepare($sql);
+    $instrucao->bindParam(":EMAIL", $email);
+    $instrucao->bindParam(":TOKEN", $token_hash);
+    $instrucao->bindParam(":EXPIRAR", $expirar);
+    $instrucao->execute();
+}   
+
+
+
 ?>
 
