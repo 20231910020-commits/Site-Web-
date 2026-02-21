@@ -1,0 +1,75 @@
+.conteudo-app {
+    width: 100%; min-height: 100vh; padding-top: 80px; padding-bottom: 80px;
+    display: flex; justify-content: center; align-items: flex-start;
+}
+
+.card-delivery {
+    background-color: white; width: 100%; max-width: 550px; border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin: 0 15px; overflow: hidden;
+    position: relative; text-align: left;
+}
+
+.prato-header { padding: 25px; border-bottom: 1px solid #f0f0f0; }
+.prato-header h2 { font-size: 20px; color: #333; margin-bottom: 8px; }
+.preco-destaque { color: #1b5e20; font-weight: bold; font-size: 16px; }
+
+.secao-lista { border-bottom: 8px solid #f0f2f5; }
+.secao-titulo {
+    background-color: #fafafa; padding: 12px 20px;
+    display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee;
+}
+.secao-titulo h3 { font-size: 14px; color: #444; font-weight: 700; margin: 0; text-transform: uppercase; }
+
+.badge-obrigatorio { background: #555; color: white; font-size: 10px; padding: 3px 6px; border-radius: 4px; font-weight: bold; }
+.badge-opcional { background: #ccc; color: white; font-size: 10px; padding: 3px 6px; border-radius: 4px; font-weight: bold; }
+
+.item-linha {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 25px; border-bottom: 1px solid #eee; cursor: pointer; background: white;
+}
+.item-linha input[type="radio"] { display: block; transform: scale(1.3); accent-color: #1b5e20; cursor: pointer; }
+
+.check-plus-wrapper input { display: none; }
+.plus-custom {
+    width: 26px; height: 26px; border: 2px solid #ccc; border-radius: 4px; position: relative; display: block;
+}
+.plus-custom::before, .plus-custom::after {
+    content: ''; position: absolute; background-color: #ccc; top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+.plus-custom::before { width: 2px; height: 14px; }
+.plus-custom::after { width: 14px; height: 2px; }
+.check-plus-wrapper input:checked + .plus-custom { background-color: #1b5e20; border-color: #1b5e20; }
+.check-plus-wrapper input:checked + .plus-custom::before,
+.check-plus-wrapper input:checked + .plus-custom::after { background-color: white; }
+
+.controle-qtd { display: flex; justify-content: center; align-items: center; padding: 20px; gap: 20px; }
+.btn-qtd {
+    width: 40px; height: 40px; border-radius: 50%; border: 1px solid #ddd; background: white;
+    color: #1b5e20; font-size: 24px; cursor: pointer;
+}
+#qtd { width: 50px; text-align: center; border: none; font-size: 20px; font-weight: bold; }
+
+.area-texto textarea { width: calc(100% - 40px); margin: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 6px; }
+.area-data-extra { padding: 20px; background: #fafafa; border-top: 1px solid #eee; }
+.input-data-app { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+
+.barra-total {
+    position: fixed; bottom: 0; left: 0; width: 100%; background: white;
+    padding: 15px 20px; box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+    display: flex; justify-content: space-between; align-items: center; z-index: 999;
+}
+
+/* Estilos de Confirmação e Pix */
+.conteudo-sucesso { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 40px 20px; }
+.circulo-sucesso { width: 80px; height: 80px; background: #e8f5e9; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.check-icon { color: #1b5e20; font-size: 40px; font-weight: bold; }
+.ticket-box { background: #fafafa; border: 2px dashed #ccc; padding: 20px; border-radius: 8px; width: 100%; max-width: 350px; margin-bottom: 25px; }
+.ticket-linha { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; border-bottom: 1px solid #eee; padding-bottom: 12px; }
+.destaque-senha { text-align: center; background: #1b5e20; color: white; padding: 10px; border-radius: 5px; margin-bottom: 20px; }
+.destaque-senha strong { font-size: 28px; letter-spacing: 2px; }
+
+.box-pix { background: #fff; border: 1px solid #c8e6c9; border-radius: 8px; padding: 20px; width: 100%; max-width: 350px; margin-bottom: 25px; text-align: center; }
+.qr-area { width: 180px; height: 180px; background: #f5f5f5; border: 2px solid #eee; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; }
+.copia-cola { display: flex; gap: 5px; }
+.input-chave { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9; text-align: center; }
+.btn-copiar { background: #1b5e20; color: white; border: none; border-radius: 4px; padding: 0 15px; cursor: pointer; font-weight: bold; }

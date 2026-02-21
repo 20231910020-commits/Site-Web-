@@ -1,0 +1,18 @@
+.conteudo-app {
+    width: 100%; min-height: 100vh; padding-top: 80px; padding-bottom: 40px;
+    display: flex; justify-content: center; align-items: flex-start;
+}
+.card-delivery {
+    background-color: white; width: 100%; max-width: 500px; border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin: 0 15px; overflow: hidden;
+}
+.titulo-pag { padding: 20px; border-bottom: 1px solid #eee; }
+.lista-pedidos { display: flex; flex-direction: column; }
+.pedido-item { padding: 20px; border-bottom: 1px solid #f0f0f0; display: flex; flex-direction: column; gap: 5px; }
+.linha-topo { display: flex; justify-content: space-between; font-size: 14px; }
+.data { color: #666; }
+.status { font-weight: bold; text-transform: uppercase; font-size: 12px; }
+.status.verde { color: #1b5e20; }
+.status.cinza { color: #999; }
+.status.vermelho { color: #d32f2f; }
+.linha-detalhe { display: flex; justify-content: space-between; font-size: 16px; color: #333; }

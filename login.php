@@ -34,7 +34,7 @@
                     <input type="password" name="senha" placeholder="Senha" size ="300" id="senha" required>
                 </div>
 
-                <button type="submit" class="btn-verde" name="logar">Entrar</button>
+                <button type="submit" class="btn-verde" name="salvar">Entrar</button>
                 
                 <div class="links-auxiliares">
                     <a href="esqueceu_senha.php">Esqueceu a senha?</a>

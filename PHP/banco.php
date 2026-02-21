@@ -26,7 +26,7 @@ function buscar_usuario($email){
 
     return $instrucao->fetch(PDO::FETCH_ASSOC);
 
-}
+} 
 
 function redefinir_senha($token_hash, $nova_senha){
     $conn = conectar();
@@ -40,6 +40,14 @@ function redefinir_senha($token_hash, $nova_senha){
 
 function inserir_token($email,$token_hash, $expirar){
     $conn = conectar();
+    $check = $conn->prepare("SELECT * FROM usuarios WHERE email = :EMAIL");
+    $check->bindParam(":EMAIL", $email);
+    $check->execute();
+
+    if($check->rowCount() == 0) {
+        die("E-mail não encontrado.");
+    }
+
     $sql = "UPDATE usuarios SET reset_token_hash = :TOKEN, token_expirar= :EXPIRAR WHERE email = :EMAIL";
     $instrucao = $conn->prepare($sql);
     $instrucao->bindParam(":EMAIL", $email);
@@ -48,7 +56,38 @@ function inserir_token($email,$token_hash, $expirar){
     $instrucao->execute();
 }   
 
+function login($email, $senha) {
+    $conn = conectar();
+    $sql = "SELECT * FROM usuarios WHERE email = :EMAIL";
+    $instrucao = $conn->prepare($sql);
+    $instrucao->bindParam(":EMAIL", $email);
+    $instrucao->execute();
+    $usuario = $instrucao->fetch(PDO::FETCH_ASSOC);
 
+    if ($usuario && password_verify($senha, $usuario['senha'])) {
+         header('Location:../cardapio.php');
+        exit;
+    } else {
+        // Falha no login
+        die("E-mail ou senha incorretos.");
+    }
+    exit;
 
+    
+}
+
+ function token_ainda_valido($email){
+    $conn = conectar();
+
+    $sql = "SELECT token_expirar FROM usuarios 
+            WHERE email = :EMAIL AND token_expirar > NOW()";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":EMAIL",$email);
+    $stmt->execute();
+
+    return $stmt->rowCount() > 0;
+
+ }
 ?>
 

@@ -1,0 +1,26 @@
+.conteudo-admin {
+    width: 100%; min-height: 100vh; padding-top: 80px; padding-bottom: 40px;
+    display: flex; justify-content: center; align-items: flex-start;
+}
+.card-painel {
+    background-color: white; width: 100%; max-width: 900px; border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin: 0 15px; overflow: hidden; display: flex; flex-direction: column;
+}
+.painel-header { padding: 20px 25px; background: white; border-bottom: 1px solid #eee; }
+.tabela-responsive { width: 100%; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+thead { background-color: #1b5e20; color: white; }
+th, td { padding: 15px 20px; text-align: left; border-bottom: 1px solid #eee; }
+.texto-verde { color: #1b5e20; font-weight: bold; }
+.badge { display: inline-block; padding: 5px 10px; border-radius: 4px; color: white; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+.badge.retirado { background: #fb8c00; }
+.badge.pendente { background: #2e7d32; }
+.painel-resumo { background: #e8f5e9; padding: 15px 25px; border-top: 1px solid #c8e6c9; display: flex; gap: 20px; flex-wrap: wrap; }
+
+@media (max-width: 768px) {
+    thead { display: none; }
+    table, tbody, tr, td { display: block; width: 100%; }
+    tr { margin-bottom: 15px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
+    td { padding: 10px 20px; text-align: right; display: flex; justify-content: space-between; align-items: center; }
+    td::before { content: attr(data-label); font-weight: bold; color: #1b5e20; text-transform: uppercase; font-size: 12px; }
+}
