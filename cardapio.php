@@ -35,7 +35,7 @@ session_start();
             <p class="subtitulo">
                 Agende seu almoço online de forma prática
             </p>
-
+                
             <div class="imagem-prato">
                 <img src="/cardapio/Imagem/prato.jpeg" alt="Prato de comida">
             </div>
@@ -46,7 +46,7 @@ session_start();
 
         <div class="botoes">
             <a href="login.php" class="btn login">
-                Login
+                Login 
             </a>
             <a href="cadastro.php" class="btn cadastro">
                 Cadastro
