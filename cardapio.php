@@ -37,7 +37,7 @@ session_start();
             </p>
                 
             <div class="imagem-prato">
-                <img src="/cardapio/Imagem/prato.jpeg" alt="Prato de comida">
+                <img src="../cardapio/Imagem/prato.jpeg" alt="Prato de comida">
             </div>
         </div>
         <p class="texto-login">

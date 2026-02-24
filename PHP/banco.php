@@ -3,23 +3,24 @@ include 'config.php';
 
 function cadastrar_usuario($nome, $email, $senha){
     $conn = conectar();
-    $sql= "INSERT INTO usuarios (nome, email, senha, role) VALUES (:NOME, :EMAIL, :SENHA, 'Cliente')";
-   
-    $senhaHash= password_hash($senha, PASSWORD_DEFAULT);
 
-    $instrucao= $conn -> prepare ($sql);
-    $instrucao -> bindparam(":NOME",$nome);
-    $instrucao -> bindparam(":EMAIL",$email);
-    $instrucao -> bindparam(":SENHA",$senhaHash);
+    $sql = "INSERT INTO usuarios (nome, email, senha, role) 
+            VALUES (:NOME, :EMAIL, :SENHA, 'Cliente')";
+   
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+    $instrucao = $conn->prepare($sql);
+    $instrucao -> bindParam(":NOME",$nome);
+    $instrucao -> bindParam(":EMAIL",$email);
+    $instrucao -> bindParam(":SENHA",$senhaHash);
     $instrucao -> execute();
 
-    header('Location:../login.php');
-    exit;
+    return true;
 }
 
 function buscar_usuario($email){
     $conn = conectar();
-    $sql= "INSERT INTO usuarios (email) VALUES (:EMAIL)";
+    $sql = "SELECT * FROM usuarios WHERE email = :EMAIL";
     $instrucao= $conn -> prepare ($sql);
     $instrucao -> bindparam(":EMAIL",$email);
     $instrucao -> execute();
@@ -92,22 +93,28 @@ function inserir_token($email,$token_hash,$expirar){
 
 
 function login($email, $senha) {
+
     $conn = conectar();
+
     $sql = "SELECT * FROM usuarios WHERE email = :EMAIL";
     $instrucao = $conn->prepare($sql);
     $instrucao->bindParam(":EMAIL", $email);
     $instrucao->execute();
+
     $usuario = $instrucao->fetch(PDO::FETCH_ASSOC);
 
     if ($usuario && password_verify($senha, $usuario['senha'])) {
-         header('Location:../cardapio.php');
+
+        session_start();
+        $_SESSION['usuario'] = $usuario['nome'];
+        $_SESSION['role'] = $usuario['ROLE'];
+
+        header('Location: ../cardapio.php');
         exit;
+
     } else {
         die("E-mail ou senha incorretos.");
     }
-    exit;
-
-    
 }
 
 function token_ainda_valido($email){
