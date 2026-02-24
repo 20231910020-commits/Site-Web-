@@ -5,6 +5,12 @@ if(!isset($_SESSION['usuario'])){
     header("Location: login.php");
     exit;
 }
+
+if($_SESSION['role'] !== 'Cliente') {
+    header("Location: login.php");
+    exit;
+}
+?>
 ?>
 
 <!DOCTYPE html>
