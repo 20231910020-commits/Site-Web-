@@ -31,7 +31,22 @@ $total = ($preco + $suco) * $quantidade;
 
 /* SENHA */
 $senha = rand(100,999);
+
+// Criar array se não existir
+if(!isset($_SESSION['pedidos'])){
+    $_SESSION['pedidos'] = [];
+}
+
+// Salvar pedido
+$_SESSION['pedidos'][] = [
+    "data" => $data_formatada,
+    "tipo" => $tipo_refeicao, // prato ou marmita
+    "quantidade" => $quantidade,
+    "total" => $total, // salva número puro
+    "status" => "Agendado"
+];
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

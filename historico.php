@@ -1,3 +1,20 @@
+,?php
+if(!isset($_SESSION['pedidos'])){
+    $_SESSION['pedidos'] = [];
+}
+
+$_SESSION['pedidos'][] = [
+    "senha" => $senha,
+    "data" => $data,
+    "prato" => "Almoço Tradicional",
+    "tipo" => $tipo_refeicao_texto,
+    "quantidade" => $quantidade,
+    "pagamento" => $pagamento_texto,
+    "observacao" => $observacao,
+    "total" => number_format($total,2,',','.')
+];
+?>
+
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
