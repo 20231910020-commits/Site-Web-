@@ -25,7 +25,7 @@
 
     <main class="conteudo-app">
         <div class="card-delivery">
-            <form action="confirmar_agendamento.php" method="POST">
+            <form action="confirmacao.php" method="POST">
                 
                 <div class="prato-header">
                     <h2>Almoço Tradicional</h2>
