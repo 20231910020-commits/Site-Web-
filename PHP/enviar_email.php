@@ -1,8 +1,9 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 require '../vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 
 function enviar_email($email, $token) {
 
@@ -15,12 +16,14 @@ try {
     $mail->Username   = '9fda0f001@smtp-brevo.com';                    
     $mail->Password   = 'Xv52rTQqIa73kZnD';                               
     $mail->SMTPSecure = 'tls';           
-    $mail->Port     = 587;                                        
+    $mail->Port = 587;                                        
     $mail->setFrom('cantina994@gmail.com', 'Cantina IFBA');
     $mail->addAddress($email);
    
     $mail->Subject = 'Resetar Senha';
-    $mail->Body    = 'Clique no link para redefinir sua senha: <a href="http://localhost/../Site_LP/Site-Web-/redefinir_senha.php?token='.$token.'">Redefinir Senha</a>';
+    $mail->Body = 'Clique no link para redefinir sua senha: 
+<a href="http://localhost/Site-Web-/redefinir_senha.php?token='.$token.'">
+Redefinir Senha</a>';
     $mail->isHTML(true);                                  
     $mail->send();
     echo 'Message has been sent';

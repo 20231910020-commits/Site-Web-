@@ -13,8 +13,5 @@ if(inserir_token($email, $token_hash, $expirar)){
 
  header('Location:../verificar_email.php');
         exit;
-   
-
-
 }
 ?>

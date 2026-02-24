@@ -29,4 +29,3 @@ if(isset($_POST['salvar'])){
         die("Token inválido ou expirado.");
     }
 }
-?>

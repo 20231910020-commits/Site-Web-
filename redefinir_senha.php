@@ -35,8 +35,8 @@ $token = $_GET['token'] ?? '';
                 Escolha uma nova senha para sua conta
             </p>
 
-            <form method="POST" action="./PHP/redefinir_senha.php">
-<input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">            
+            <form method="POST" action="PHP/redefinir_senha.php">
+            <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">            
             
             <input 
                     type="password"
