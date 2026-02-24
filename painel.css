@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+/* Conteúdo central */
+.conteudo-painel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+}
+
+/* Card principal */
+.card-painel {
+    background: #ffffff;
+    padding: 40px;
+    width: 360px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.card-painel h2 {
+    margin-bottom: 30px;
+    color: #1d3557;
+}
+
+/* Botões */
+.btn-opcao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s ease;
+}
+
+/* Botão agendar */
+.btn-agendar {
+    background-color: #2a9d8f;
+}
+
+.btn-agendar:hover {
+    background-color: #21867a;
+}
+
+/* Botão histórico */
+.btn-historico {
+    background-color: #457b9d;
+}
+
+.btn-historico:hover {
+    background-color: #35617c;
+}
+
+/* Ícones */
+.icone {
+    font-size: 18px;
+}

@@ -37,7 +37,7 @@ $token = $_GET['token'] ?? '';
 
             <form method="POST" action="PHP/redefinir_senha.php">
             <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">            
-            
+
             <input 
                     type="password"
                     name="senha"

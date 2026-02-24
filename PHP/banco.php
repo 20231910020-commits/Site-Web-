@@ -107,9 +107,9 @@ function login($email, $senha) {
 
         session_start();
         $_SESSION['usuario'] = $usuario['nome'];
-        $_SESSION['role'] = $usuario['ROLE'];
+        $_SESSION['role'] = $usuario['role'];
 
-        header('Location: ../cardapio.php');
+        header('Location: ../painel.php');
         exit;
 
     } else {
