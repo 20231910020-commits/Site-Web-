@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+require_once 'config.php';
 
 function cadastrar_usuario($nome, $email, $senha){
     $conn = conectar();
@@ -103,19 +103,13 @@ function login($email, $senha) {
 
     $usuario = $instrucao->fetch(PDO::FETCH_ASSOC);
 
-    if ($usuario && password_verify($senha, $usuario['senha'])) {
-
-        session_start();
-        $_SESSION['usuario'] = $usuario['nome'];
-        $_SESSION['role'] = $usuario['role'];
-
-        header('Location: ../painel.php');
-        exit;
-
-    } else {
-        die("E-mail ou senha incorretos.");
+     if ($usuario && password_verify($senha, $usuario['senha'])) {
+        return $usuario;
     }
+
+    return false; 
 }
+
 
 function token_ainda_valido($email){
     $conn = conectar();
@@ -132,8 +126,6 @@ function token_ainda_valido($email){
     $instrucao->execute();
 
     return $instrucao->fetch() !== false;
-}
-
- 
+} 
 ?>
 

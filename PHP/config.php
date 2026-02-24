@@ -1,11 +1,11 @@
 <?php
 function conectar(){
-    $server="localhost:3306";
-    $nomedb="LP";
-    $username="root";
-    $senha="";
+$server="localhost:3306";
+$nomedb="LP";
+$username="731";
+$senha="turma731";
 
-    $conn = new PDO ("mysql:dbname=LP;host=127.0.0.1:3306","root","root");
-    return $conn;
+$conexao = new PDO("mysql:host=$server;dbname=$nomedb",$username,$senha);
+return $conexao;
 }
 ?>
