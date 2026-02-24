@@ -13,6 +13,7 @@ if(isset($_POST['salvar'])) {
     $_SESSION['id_usuario'] = $usuario['id_usuario'];
     $_SESSION['usuario'] = $usuario['nome'];
     $_SESSION['role'] = $usuario['ROLE'];
+    
 
     if($_SESSION['role'] === 'Admin') {
         header("Location: ../admin.php");

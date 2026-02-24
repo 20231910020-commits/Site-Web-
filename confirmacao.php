@@ -20,9 +20,9 @@ $suco = isset($_POST['suco']) ? 2 : 0;
 
 /* DATA */
 if($tipo_data == 'hoje'){
-    $data_formatada = date('d/m/Y');
+    $data_formatada = date('Y-m-d');
 } else {
-    $data_formatada = date('d/m/Y', strtotime($_POST['data_agendamento']));
+    $data_formatada = date('Y-m-d', strtotime($_POST['data_agendamento']));
 }
 
 /* CÁLCULO */
@@ -40,11 +40,30 @@ if(!isset($_SESSION['pedidos'])){
 // Salvar pedido
 $_SESSION['pedidos'][] = [
     "data" => $data_formatada,
-    "tipo" => $tipo_refeicao, // prato ou marmita
+    "tipo" => $tipo_refeicao,
     "quantidade" => $quantidade,
-    "total" => $total, // salva número puro
+    "total" => $total, 
     "status" => "Agendado"
 ];
+
+require_once "php/config.php";
+
+$con = conectar();
+
+$id_usuario = $_SESSION['id_usuario']; // precisa estar salvo no login
+
+$sql = "INSERT INTO pedidos 
+        (id_usuario, data_pedido, tipo_refeicao, quantidade, total, status)
+        VALUES (:id_usuario, :data_pedido, :tipo, :quantidade, :total, 'Agendado')";
+
+$stmt = $con->prepare($sql);
+$stmt->bindParam(":id_usuario", $id_usuario);
+$stmt->bindParam(":data_pedido", $data_formatada);
+$stmt->bindParam(":tipo", $tipo_refeicao);
+$stmt->bindParam(":quantidade", $quantidade);
+$stmt->bindParam(":total", $total);
+
+$stmt->execute();
 ?>
 
 <!DOCTYPE html>
