@@ -11,13 +11,18 @@ if(isset($_POST['salvar'])) {
     $expirar = date("Y-m-d H:i:s", time() + 60 * 30);
 
     if(inserir_token($email, $token_hash, $expirar)){
-        enviar_email($email, $token);
-        $_SESSION['mensagem'] = "Verifique seu e-mail para redefinir a senha.";
-    } else {
-        $_SESSION['erro'] = "E-mail não encontrado.";
-    }
 
-    header('Location: ../verificar_email.php');
-    exit;
+        // Email cadastrado
+        enviar_email($email, $token);
+        header('Location: ../verificar_email.php');
+        exit;
+
+    } else {
+
+        // Email NÃO cadastrado
+        $_SESSION['erro_email'] = "E-mail está inválido!";
+        header('Location: ../esqueceu_senha.php');
+        exit;
+    }
 }
 ?>

@@ -1,15 +1,5 @@
 <?php
 session_start();
-
-if(isset($_SESSION['mensagem'])){
-    echo "<p style='color:green; text-align:center;'>" . $_SESSION['mensagem'] . "</p>";
-    unset($_SESSION['mensagem']);
-}
-
-if(isset($_SESSION['erro'])){
-    echo "<p style='color:red; text-align:center;'>" . $_SESSION['erro'] . "</p>";
-    unset($_SESSION['erro']);
-}
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +7,7 @@ if(isset($_SESSION['erro'])){
 <head>
     <meta charset="UTF-8">
     <title>Esqueceu a Senha</title>
-    <link rel="stylesheet" href="esqueceuSenha.css">
+    <link rel="stylesheet" href="esqueceuSenha.css?v=2">
 </head>
 <body>
 
@@ -43,9 +33,17 @@ if(isset($_SESSION['erro'])){
             <h1>Esqueceu a senha?</h1>
             <p class="subtitulo">Redefina a senha em duas etapas</p>
 
+            <?php
+            if(isset($_SESSION['erro_email'])){
+                echo "<p class='msg-erro'>".$_SESSION['erro_email']."</p>";
+                unset($_SESSION['erro_email']);
+            }
+            ?>
+
+
             <form method="POST" action="./PHP/enviar_token.php">
-                <input type="email" placeholder="E-mail" name="email" id="email" required >
-                <button type="submit" class="btn cadastro" name="salvar"> Enviar</button>
+                <input type="email" placeholder="E-mail" name="email" id="email" required>
+                <button type="submit" class="btn cadastro" name="salvar">Enviar</button>
             </form>
         </div>
     </main>

@@ -118,3 +118,12 @@ body {
 .btn:hover {
     opacity: 0.9;
 }
+
+.msg-erro {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -20px;   /* sobe mais */
+    margin-bottom: 30px; /* afasta do input */
+    font-size: 15px;
+}

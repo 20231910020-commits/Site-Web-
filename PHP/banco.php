@@ -70,16 +70,19 @@ function redefinir_senha($token_hash, $nova_senha){
 function inserir_token($email,$token_hash,$expirar){
     $conn = conectar();
 
+    // Verifica se o email existe
     $check = $conn->prepare("SELECT * FROM usuarios WHERE email = :EMAIL");
     $check->bindParam(":EMAIL", $email);
     $check->execute();
 
     if($check->rowCount() == 0) {
-        return false;
+        return false; // Email não cadastrado
     }
 
+    // Atualiza token
     $sql = "UPDATE usuarios
-            SET reset_token_hash = :TOKEN, token_expirar = :EXPIRAR
+            SET reset_token_hash = :TOKEN,
+                token_expirar = :EXPIRAR
             WHERE email = :EMAIL";
 
     $instrucao = $conn->prepare($sql);
