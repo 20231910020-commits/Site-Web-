@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once "banco.php";
 
 if(!isset($_SESSION['usuario'])){
     header("Location: ../login.php");
@@ -44,24 +45,17 @@ $_SESSION['confirmacao'] = [
     "total" => $total
 ];
 
-/* BANCO DE DADOS */
-require_once "config.php";
-$con = conectar();
-
+/* CHAMANDO FUNÇÃO DO BANCO */
 $id_usuario = $_SESSION['id_usuario'];
 
-$sql = "INSERT INTO pedidos
-        (id_usuario, data_pedido, tipo_refeicao, quantidade, total, status)
-        VALUES (:id_usuario, :data_pedido, :tipo, :quantidade, :total, 'Agendado')";
+inserir_pedido(
+    $id_usuario,
+    $data_formatada,
+    $tipo_refeicao,
+    $quantidade,
+    $total
+);
 
-$stmt = $con->prepare($sql);
-$stmt->bindParam(":id_usuario", $id_usuario);
-$stmt->bindParam(":data_pedido", $data_formatada);
-$stmt->bindParam(":tipo", $tipo_refeicao);
-$stmt->bindParam(":quantidade", $quantidade);
-$stmt->bindParam(":total", $total);
-$stmt->execute();
-
-/* REDIRECIONA PARA CONFIRMAÇÃO */
+/* REDIRECIONA */
 header("Location: ../confirmacao.php");
 exit;

@@ -130,5 +130,23 @@ function token_ainda_valido($email){
 
     return $instrucao->fetch() !== false;
 } 
+
+function inserir_pedido($id_usuario, $data_pedido, $tipo, $quantidade, $total){
+
+    $con = conectar();
+
+    $sql = "INSERT INTO pedidos
+            (id_usuario, data_pedido, tipo_refeicao, quantidade, total, status)
+            VALUES (:id_usuario, :data_pedido, :tipo, :quantidade, :total, 'Agendado')";
+
+    $stmt = $con->prepare($sql);
+    $stmt->bindParam(":id_usuario", $id_usuario);
+    $stmt->bindParam(":data_pedido", $data_pedido);
+    $stmt->bindParam(":tipo", $tipo);
+    $stmt->bindParam(":quantidade", $quantidade);
+    $stmt->bindParam(":total", $total);
+
+    return $stmt->execute();
+}
 ?>
 
