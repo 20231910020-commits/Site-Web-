@@ -118,3 +118,13 @@ body {
 .btn:hover {
     opacity: 0.9;
 }
+
+.msg-erro {
+    background-color: #ffebee;
+    color: #d32f2f !important;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}

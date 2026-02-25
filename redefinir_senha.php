@@ -1,16 +1,6 @@
 <?php
 session_start();
-
 $token = $_GET['token'] ?? '';
-
-if(isset($_SESSION['erro_redefinir'])){
-    echo "<p style='color:red; text-align:center;'>".$_SESSION['erro_redefinir']."</p>";
-    unset($_SESSION['erro_redefinir']);
-}
-if(isset($_SESSION['sucesso'])){
-    echo "<p style='color:green; text-align:center;'>" . $_SESSION['sucesso'] . "</p>";
-    unset($_SESSION['sucesso']);
-}
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +8,7 @@ if(isset($_SESSION['sucesso'])){
 <head>
     <meta charset="UTF-8">
     <title>Criar Nova Senha</title>
-    <link rel="stylesheet" href="novaSenha.css">
+    <link rel="stylesheet" href="novaSenha.css?v=<?php echo time(); ?>">
 </head>
 <body>
 
@@ -42,9 +32,22 @@ if(isset($_SESSION['sucesso'])){
     <main class="conteudo">
         <div class="card-senha">
             <h1>Criar nova senha</h1>
+            
             <p class="subtitulo">
                 Escolha uma nova senha para sua conta
             </p>
+
+            <?php
+            if(isset($_SESSION['erro_redefinir'])){
+                echo "<div class='msg-erro'>".$_SESSION['erro_redefinir']."</div>";
+                unset($_SESSION['erro_redefinir']);
+            }
+
+            if(isset($_SESSION['sucesso'])){
+                echo "<p class='msg-sucesso'>".$_SESSION['sucesso']."</p>";
+                unset($_SESSION['sucesso']);
+            }
+            ?>
 
             <form method="POST" action="PHP/redefinir_senha.php">
             <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">            

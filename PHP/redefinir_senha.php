@@ -9,7 +9,7 @@ if(isset($_POST['salvar'])){
     $confirmar_senha = $_POST['confirmar_senha'];
 
     if($nova_senha !== $confirmar_senha) {
-        $_SESSION['erro_redefinir'] = "As senhas não coincidem.";
+        $_SESSION['erro_redefinir'] = "As senhas não coincidem!";
         header("Location: ../redefinir_senha.php?token=".$token);
         exit;
     }
@@ -28,6 +28,7 @@ if(isset($_POST['salvar'])){
         $_SESSION['sucesso'] = "Senha redefinida com sucesso!";
         header("Location: ../login.php");
         exit;
+
     } else {
         $_SESSION['erro_redefinir'] = "Token inválido ou expirado.";
         header("Location: ../esqueceu_senha.php");
