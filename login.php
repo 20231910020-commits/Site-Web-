@@ -24,6 +24,14 @@
     <main class="content-full">
         <div class="login-container">
             <h2>Entrar</h2>
+
+            <?php
+            session_start();
+            if(isset($_SESSION['erro_login'])){
+                echo "<p style='color:red; text-align:center;'>" . $_SESSION['erro_login'] . "</p>";
+                unset($_SESSION['erro_login']);
+            }
+            ?>
             
             <form action="./PHP/logar.php" method="POST">
                 <div class="input-group">

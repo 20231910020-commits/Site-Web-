@@ -1,7 +1,18 @@
 <?php
+session_start();
+
 $token = $_GET['token'] ?? '';
 
+if(isset($_SESSION['erro_redefinir'])){
+    echo "<p style='color:red; text-align:center;'>".$_SESSION['erro_redefinir']."</p>";
+    unset($_SESSION['erro_redefinir']);
+}
+if(isset($_SESSION['sucesso'])){
+    echo "<p style='color:green; text-align:center;'>" . $_SESSION['sucesso'] . "</p>";
+    unset($_SESSION['sucesso']);
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

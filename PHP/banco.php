@@ -75,11 +75,11 @@ function inserir_token($email,$token_hash,$expirar){
     $check->execute();
 
     if($check->rowCount() == 0) {
-        die("E-mail não encontrado.");
+        return false;
     }
 
-    $sql = "UPDATE usuarios 
-            SET reset_token_hash = :TOKEN, token_expirar = :EXPIRAR 
+    $sql = "UPDATE usuarios
+            SET reset_token_hash = :TOKEN, token_expirar = :EXPIRAR
             WHERE email = :EMAIL";
 
     $instrucao = $conn->prepare($sql);

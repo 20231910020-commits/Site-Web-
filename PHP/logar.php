@@ -10,18 +10,22 @@ if(isset($_POST['salvar'])) {
     $usuario = login($email, $senha);
 
     if($usuario) {
-    $_SESSION['id_usuario'] = $usuario['id_usuario'];
-    $_SESSION['usuario'] = $usuario['nome'];
-    $_SESSION['role'] = $usuario['ROLE'];
-    
 
-    if($_SESSION['role'] === 'Admin') {
-        header("Location: ../admin.php");
+        $_SESSION['id_usuario'] = $usuario['id_usuario'];
+        $_SESSION['usuario'] = $usuario['nome'];
+        $_SESSION['role'] = $usuario['ROLE'];
+
+        if($_SESSION['role'] === 'Admin') {
+            header("Location: ../admin.php");
+        } else {
+            header("Location: ../painel.php");
+        }
+        exit;
+
     } else {
-        header("Location: ../painel.php");
+        $_SESSION['erro_login'] = "E-mail ou senha inválidos!";
+        header("Location: ../login.php");
+        exit;
     }
-
-    exit;
-}
 }
 ?>

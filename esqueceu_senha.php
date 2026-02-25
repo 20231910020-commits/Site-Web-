@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if(isset($_SESSION['mensagem'])){
+    echo "<p style='color:green; text-align:center;'>" . $_SESSION['mensagem'] . "</p>";
+    unset($_SESSION['mensagem']);
+}
+
+if(isset($_SESSION['erro'])){
+    echo "<p style='color:red; text-align:center;'>" . $_SESSION['erro'] . "</p>";
+    unset($_SESSION['erro']);
+}
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
