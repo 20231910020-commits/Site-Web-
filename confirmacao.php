@@ -1,69 +1,12 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['usuario'])){
-    header("Location: login.php");
-    exit;
-}
-
-if($_SERVER["REQUEST_METHOD"] !== "POST"){
+if(!isset($_SESSION['confirmacao'])){
     header("Location: agendamento.php");
     exit;
 }
 
-/* RECEBENDO DADOS */
-$quantidade = (int) $_POST['quantidade'];
-$tipo_refeicao = $_POST['tipo_refeicao']; // prato ou marmita
-$tipo_data = $_POST['tipo_data'];
-$pagamento = $_POST['pagamento']; // online ou retirada
-$suco = isset($_POST['suco']) ? 2 : 0;
-
-/* DATA */
-if($tipo_data == 'hoje'){
-    $data_formatada = date('Y-m-d');
-} else {
-    $data_formatada = date('Y-m-d', strtotime($_POST['data_agendamento']));
-}
-
-/* CÁLCULO */
-$preco = 12;
-$total = ($preco + $suco) * $quantidade;
-
-/* SENHA */
-$senha = rand(100,999);
-
-// Criar array se não existir
-if(!isset($_SESSION['pedidos'])){
-    $_SESSION['pedidos'] = [];
-}
-
-// Salvar pedido
-$_SESSION['pedidos'][] = [
-    "data" => $data_formatada,
-    "tipo" => $tipo_refeicao,
-    "quantidade" => $quantidade,
-    "total" => $total, 
-    "status" => "Agendado"
-];
-
-require_once "php/config.php";
-
-$con = conectar();
-
-$id_usuario = $_SESSION['id_usuario']; // precisa estar salvo no login
-
-$sql = "INSERT INTO pedidos 
-        (id_usuario, data_pedido, tipo_refeicao, quantidade, total, status)
-        VALUES (:id_usuario, :data_pedido, :tipo, :quantidade, :total, 'Agendado')";
-
-$stmt = $con->prepare($sql);
-$stmt->bindParam(":id_usuario", $id_usuario);
-$stmt->bindParam(":data_pedido", $data_formatada);
-$stmt->bindParam(":tipo", $tipo_refeicao);
-$stmt->bindParam(":quantidade", $quantidade);
-$stmt->bindParam(":total", $total);
-
-$stmt->execute();
+$dados = $_SESSION['confirmacao'];
 ?>
 
 <!DOCTYPE html>
@@ -104,35 +47,35 @@ $stmt->execute();
 
                 <div class="destaque-senha">
                     <span>SENHA</span><br>
-                    <strong>#<?php echo $senha; ?></strong>
+                    <strong>#<?php echo $dados['senha']; ?></strong>
                 </div>
 
                 <div class="ticket-linha">
                     <span>Cliente:</span>
-                    <strong><?php echo $_SESSION['usuario']; ?></strong>
+                    <strong><?php echo $dados['usuario']; ?></strong>
                 </div>
 
                 <div class="ticket-linha">
                     <span>Data:</span>
-                    <strong><?php echo $data_formatada; ?></strong>
+                    <strong><?php echo $dados['data']; ?></strong>
                 </div>
 
                 <div class="ticket-linha">
                     <span>Tipo:</span>
-                    <strong><?php echo ucfirst($tipo_refeicao); ?></strong>
+                    <strong><?php echo ucfirst($dados['tipo']); ?></strong>
                 </div>
 
                 <div class="ticket-linha">
                     <span>Quantidade:</span>
-                    <strong><?php echo $quantidade; ?></strong>
+                    <strong><?php echo $dados['quantidade']; ?></strong>
                 </div>
 
                 <div class="ticket-linha">
                     <span>Pagamento:</span>
-                    <strong><?php echo ucfirst($pagamento); ?></strong>
+                    <strong><?php echo ucfirst($dados['pagamento']); ?></strong>
                 </div>
 
-                <?php if($suco > 0): ?>
+                <?php if($dados['suco'] > 0): ?>
                 <div class="ticket-linha">
                     <span>Bebida:</span>
                     <strong>Suco Natural</strong>
@@ -142,13 +85,13 @@ $stmt->execute();
                 <div class="ticket-linha">
                     <span>Total:</span>
                     <strong style="color: #1b5e20;">
-                        R$ <?php echo number_format($total,2,',','.'); ?>
+                        R$ <?php echo number_format($dados['total'],2,',','.'); ?>
                     </strong>
                 </div>
 
             </div>
 
-            <?php if($pagamento == 'online'): ?>
+            <?php if($dados['pagamento'] == 'online'): ?>
             <div class="box-pix">
                 <div style="margin-bottom:10px; font-weight:bold; color:#1b5e20">
                     Pagamento via Pix
